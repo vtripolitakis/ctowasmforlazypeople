@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <script type="text/javascript" src="myfuncs.js"></script>
+    <script>
+      // initialize Emscripten stack and then move on :-)
+      moduleFactory().then(function(Module){
+        var multiplyNumbers = Module.cwrap('multiply_numbers','number',['number','number']);
+        window.alert('3*4=' + multiplyNumbers(3,4));
+        var divideNumbers = Module.cwrap('divide_numbers','number',['number','number']);
+        window.alert('3/4=' + divideNumbers(3,4));
+      })
+    </script>
+  </body>
+</html>
+
+
